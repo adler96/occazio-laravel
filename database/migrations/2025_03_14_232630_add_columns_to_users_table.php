@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('name');
-            $table->string('username')->unique();
-            $table->boolean('isAdmin')->default(false);
-            $table->string('telephone', 13);
-            $table->string('image');
+            $table->string('username')->unique()->default('admin');
+            $table->boolean('is_admin')->nullable();
+            $table->string('telephone', 14)->nullable();
+            $table->string('image')->nullable();
         });
     }
 

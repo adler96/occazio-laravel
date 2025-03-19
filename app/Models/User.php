@@ -52,4 +52,15 @@ class User extends Authenticatable implements MustVerifyEmail
     public function posts() {
         return $this->hasMany(Post::class);
     }
+
+    public function getFilamentName(): string
+    {
+        return $this->username; // Use 'username' as the display name
+    }
+
+    public function getNameAttribute()
+    {
+        return $this->username; // Redirect 'name' calls to 'username'
+    }
+
 }

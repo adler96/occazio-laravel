@@ -31,7 +31,7 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'photo' => ['required','image','mimes:jpeg,png,jpg,gif','max:2048'],
-            'username' => ['required', 'string', 'max:25', 'unique:'.User::class],
+            'username' => ['required', 'string', 'min:6', 'max:25', 'unique:'.User::class],
             'telephone' => ['required', 'regex:/^(?:\+221|00221)?(7(?:0|6|7|8|5)[0-9]{7})$/', 'unique:'.User::class],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
